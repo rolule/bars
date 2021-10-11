@@ -1,17 +1,13 @@
 {
   "name": "bars",
-  "version": "1.0.0",
   "main": "build/index.js",
   "repository": "https://github.com/rolule/bars.git",
   "author": "Robin Luley",
   "license": "MIT",
   "private": true,
   "type": "module",
-  "bin": {
-    "bars": "bars.sh"
-  },
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "./bars.sh",
     "build:ts": "yarn tsc",
     "watch:ts": "yarn tsc-watch",
     "build:babel": "yarn babel build -d dist",
