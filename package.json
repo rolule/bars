@@ -6,13 +6,13 @@
   "author": "Robin Luley",
   "license": "MIT",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "bin": "bars.sh",
   "scripts": {
     "build:ts": "yarn tsc",
     "watch:ts": "yarn tsc-watch",
-    "clean": "rm dist/bundle.js",
-    "build": "webpack --mode production -c webpack.config.cjs"
+    "clean": "rm dist/bars.js",
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "commander": "^8.2.0",
@@ -31,6 +31,7 @@
     "eslint-config-prettier": "^8.3.0",
     "prettier": "2.4.1",
     "ts-loader": "^9.2.6",
+    "ts-node": "^10.3.0",
     "tsc-watch": "^4.5.0",
     "typescript": "^4.4.3",
     "webpack": "^5.58.1",

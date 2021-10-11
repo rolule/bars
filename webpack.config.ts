@@ -1,12 +1,13 @@
-const webpack = require('webpack')
-const path = require('path')
+import * as path from 'path'
+import { Configuration } from 'webpack'
 
-const config = {
+const config: Configuration = {
   target: 'node',
+  mode: 'production',
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bars.cjs',
+    filename: 'bars.js',
   },
   module: {
     rules: [
@@ -27,4 +28,4 @@ const config = {
   },
 }
 
-module.exports = config
+export default config

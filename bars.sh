@@ -1,1 +1,1 @@
-node -r dotenv/config dist/bars.cjs $@
+node -r dotenv/config dist/bars.js $@

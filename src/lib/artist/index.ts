@@ -1,5 +1,4 @@
 import { Artist } from '../../types/artist'
-import { GeniusResponse } from '../../types/GeniusResponse'
 import { genius } from '../api'
 
 export const getArtistById = async (id: number) => {
