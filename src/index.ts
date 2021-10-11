@@ -1,4 +1,4 @@
-import { getArtistById } from './lib/artist/index'
+import { getArtistById } from '@lib/artist'
 import { Command } from 'commander'
 
 const bars = new Command()

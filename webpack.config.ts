@@ -1,6 +1,8 @@
 import * as path from 'path'
 import { Configuration } from 'webpack'
 
+const srcPath = (subdir: string) => path.join(__dirname, 'src', subdir)
+
 const config: Configuration = {
   target: 'node',
   mode: 'production',
@@ -25,6 +27,10 @@ const config: Configuration = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@lib': srcPath('lib'),
+      '@type': srcPath('types'),
+    },
   },
 }
 
