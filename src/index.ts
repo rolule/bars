@@ -1,5 +1,9 @@
 import { getArtistById } from '@lib/artist'
 import { Command } from 'commander'
+import dotenv from 'dotenv'
+
+// load environment variables from .env file
+dotenv.config()
 
 const bars = new Command()
 
