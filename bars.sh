@@ -1,0 +1,1 @@
+node -r dotenv/config --experimental-specifier-resolution=node build/index.js $@
