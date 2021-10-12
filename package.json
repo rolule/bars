@@ -2,6 +2,7 @@
   "name": "bars",
   "version": "1.0.0",
   "main": "dist/bars.js",
+  "module": "src/index.ts",
   "repository": "https://github.com/rolule/bars.git",
   "author": "Robin Luley",
   "license": "MIT",
@@ -9,10 +10,12 @@
   "type": "commonjs",
   "bin": "dist/bars.js",
   "scripts": {
-    "build:ts": "yarn tsc",
-    "watch:ts": "yarn tsc-watch",
+    "start": "dist/bars.js",
     "clean": "rm dist/bars.js",
-    "build": "webpack --mode production && chmod +x dist/bars.js"
+    "build": "webpack --mode production && chmod +x dist/bars.js",
+    "watch": "webpack --mode production --watch && chmod +x dist/bars.js",
+    "build:ts": "yarn tsc",
+    "watch:ts": "yarn tsc-watch"
   },
   "dependencies": {
     "commander": "^8.2.0",
