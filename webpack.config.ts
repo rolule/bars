@@ -33,6 +33,7 @@ const config: Configuration = {
       },
     ],
   },
+  
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
