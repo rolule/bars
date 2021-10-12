@@ -1,6 +1,7 @@
 import { getArtistById } from '@lib/artist'
 import { Command } from 'commander'
 import dotenv from 'dotenv'
+import { green } from 'chalk'
 
 // load environment variables from .env file
 dotenv.config()
@@ -17,7 +18,7 @@ bars
     console.log('Getting', name)
 
     const artist = await getArtistById(16775)
-    console.log(artist.id)
+    console.log(green(artist.id))
   })
 
 bars.parse(process.argv)
