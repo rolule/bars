@@ -7,12 +7,12 @@
   "license": "MIT",
   "private": true,
   "type": "commonjs",
-  "bin": "bars.sh",
+  "bin": "dist/bars.js",
   "scripts": {
     "build:ts": "yarn tsc",
     "watch:ts": "yarn tsc-watch",
     "clean": "rm dist/bars.js",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production && chmod +x dist/bars.js"
   },
   "dependencies": {
     "commander": "^8.2.0",

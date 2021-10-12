@@ -1,5 +1,5 @@
 import * as path from 'path'
-import { Configuration } from 'webpack'
+import { BannerPlugin, Configuration } from 'webpack'
 
 const srcPath = (subdir: string) => path.join(__dirname, 'src', subdir)
 
@@ -11,6 +11,14 @@ const config: Configuration = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bars.js',
   },
+
+  plugins: [
+    new BannerPlugin({
+      banner: '#!/usr/bin/env node',
+      raw: true,
+    }),
+  ],
+
   module: {
     rules: [
       {
