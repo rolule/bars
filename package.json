@@ -13,7 +13,7 @@
     "start": "dist/bars.js",
     "clean": "rm dist/bars.js",
     "build": "webpack --mode production && chmod +x dist/bars.js",
-    "watch": "webpack --mode production --watch && chmod +x dist/bars.js",
+    "watch": "webpack --mode development --watch && chmod +x dist/bars.js",
     "build:ts": "yarn tsc",
     "watch:ts": "yarn tsc-watch"
   },

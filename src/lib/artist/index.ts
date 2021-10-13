@@ -1,6 +1,21 @@
-import { genius } from '@lib/api'
-import { Artist } from '@type/Artist'
+import { GeniusSearchArtistResponse } from '../../types/Genius'
+import { geniusSearch } from '../api'
 
-export const getArtistById = async (id: number) => {
-  return (await genius(`artists/${id}`)).response.artist as Artist
+export const getArtistsByName = async (
+  name: string,
+  token?: string,
+  page?: string,
+) => {
+  const response = (
+    (await geniusSearch(
+      'artist',
+      name,
+      token,
+      page,
+    )) as GeniusSearchArtistResponse
+  ).response
+
+  const results = response.sections[0].hits.map(h => h.result)
+
+  return results
 }

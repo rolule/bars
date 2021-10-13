@@ -1,4 +1,4 @@
-import fetch, { Headers } from 'node-fetch'
+import fetch from 'node-fetch'
 
 export const login = async (email: string, password: string) => {
   const response = await fetch(`https://genius.com/api/sessions`, {
@@ -26,9 +26,9 @@ export const login = async (email: string, password: string) => {
     cookie.startsWith('_rapgenius_session='),
   )
 
-  if (sessionCookie !== undefined && sessionCookie.length > 0) {
-    return sessionCookie[0].split(';')[0].split('=')[1]
+  if (sessionCookie === undefined || sessionCookie.length < 1) {
+    throw 'Login failed'
   }
 
-  return undefined
+  return sessionCookie[0].split(';')[0].split('=')[1]
 }
