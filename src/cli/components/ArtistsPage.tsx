@@ -1,13 +1,13 @@
 import { getArtistsByName as searchArtistsByName } from '@lib/artist'
-import { GeniusSearchArtistSectionHitResult } from '@type/Genius'
-import { Box, render, Text, useApp, useInput } from 'ink'
-import { FC, useEffect, useState } from 'react'
+import { Box, render, Text, useApp, useInput, useStdin } from 'ink'
+import { FC, useState, useEffect } from 'react'
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
 interface ArtistsPageProps {
   name: string
   token?: string
   page: number
-  interactive: string
+  interactive: boolean
 }
 
 const ArtistsPage: FC<ArtistsPageProps> = ({
@@ -16,55 +16,51 @@ const ArtistsPage: FC<ArtistsPageProps> = ({
   page,
   interactive,
 }) => {
-  const [artists, setArtists] = useState<GeniusSearchArtistSectionHitResult[]>(
-    [],
-  )
   const [interactivePage, setInteractivePage] = useState(page)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState()
+  const [isActive, setIsActive] = useState(interactive)
 
-  const { exit } = useApp()
+  const {
+    isLoading,
+    error,
+    data: artists,
+  } = useQuery(
+    ['artists', interactivePage],
+    () => {
+      return searchArtistsByName(name, token, interactivePage)
+    },
+    {
+      retry: false,
+      staleTime: 30000,
+      keepPreviousData: true,
+    },
+  )
 
-  const exitNonInteractive = () => !interactive && exit()
+  useInput(
+    (input, key) => {
+      if (input === 'q') {
+        setIsActive(false)
+      }
 
-  useInput((input, key) => {
-    if (input === 'q') {
-      exit()
-    }
+      if (key.rightArrow && !error) {
+        setInteractivePage(p => p + 1)
+      } else if (key.leftArrow && interactivePage > 1) {
+        setInteractivePage(p => p - 1)
+      }
 
-    if (key.rightArrow && !error) {
-      setInteractivePage(p => p + 1)
-    } else if (key.leftArrow && interactivePage > 1) {
-      setInteractivePage(p => p - 1)
-    }
-  })
-
-  useEffect(() => {
-    setLoading(true)
-    searchArtistsByName(name, token, interactivePage)
-      .then(artistResponse => {
-        setArtists(artistResponse)
-        setError(undefined)
-      })
-      .catch(e => {
-        setError(e)
-        setArtists([])
-      })
-      .finally(() => {
-        setLoading(false)
-        exitNonInteractive()
-      })
-  }, [interactivePage])
+      return -1
+    },
+    { isActive },
+  )
 
   return (
     <>
       <Text>
         <Text inverse> artists page {interactivePage} </Text>{' '}
-        {loading && <Text color="cyan">...</Text>}
+        {isLoading && <Text color="cyan">...</Text>}
       </Text>
 
-      {!loading &&
-        artists.map(a => (
+      {!isLoading &&
+        artists?.map(a => (
           <Box key={a.id}>
             <Box width={10}>
               <Text color="green">{a.id}</Text>
@@ -76,10 +72,17 @@ const ArtistsPage: FC<ArtistsPageProps> = ({
           </Box>
         ))}
 
-      {error && <Text color="red">{error}</Text>}
+      {error && <Text color="red">{error as string}</Text>}
     </>
   )
 }
 
-export const renderArtistPage = (props: ArtistsPageProps) =>
-  render(<ArtistsPage {...props} />)
+const queryClient = new QueryClient()
+
+export const renderArtistPage = (props: ArtistsPageProps) => {
+  render(
+    <QueryClientProvider client={queryClient}>
+      <ArtistsPage {...props} />
+    </QueryClientProvider>,
+  )
+}

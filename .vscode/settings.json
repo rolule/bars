@@ -2,7 +2,8 @@
   "search.exclude": {
     "**/.yarn": true,
     "**/.pnp.*": true,
-    "dist/**/*.js": true
+    "dist/**/*.js": true,
+    "*.lock": true,
   },
   "eslint.nodePath": ".yarn/sdks",
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
