@@ -49,7 +49,7 @@ type GeniusSearchArtistSectionHit = {
   result: GeniusSearchArtistSectionHitResult
 }
 
-type GeniusSearchArtistSectionHitResult = {
+export type GeniusSearchArtistSectionHitResult = {
   api_path: string
   header_image_url: string
   id: number

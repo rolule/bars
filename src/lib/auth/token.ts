@@ -1,7 +1,6 @@
-import { mkdirSync, writeFileSync } from 'fs'
-import { resolve, join } from 'path'
-import { execPath } from 'process'
 import { red } from 'chalk'
+import { mkdirSync, writeFileSync } from 'fs'
+import { join, resolve } from 'path'
 
 type Exception = { code: string }
 

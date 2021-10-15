@@ -17,7 +17,7 @@ export const geniusSearch = (
   type: GeniusSearchResultType,
   q: string,
   token?: string,
-  page?: string,
+  page?: number,
 ) => {
   const pageString = `${page ? page : 1}`
   return genius(`search/${type}?page=${pageString}&q=${q}`, token)

@@ -8,7 +8,7 @@ yarn-error.log
 
 # only ignore dist/bars.*
 dist/*
-!dist/bars.*
+!dist/bars.js
 
 # OS generated files
 .DS_Store

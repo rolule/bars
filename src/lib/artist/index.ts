@@ -4,7 +4,7 @@ import { geniusSearch } from '../api'
 export const getArtistsByName = async (
   name: string,
   token?: string,
-  page?: string,
+  page?: number,
 ) => {
   const response = (
     (await geniusSearch(
@@ -16,6 +16,10 @@ export const getArtistsByName = async (
   ).response
 
   const results = response.sections[0].hits.map(h => h.result)
+
+  if(results.length === 0){
+    throw "Zero results returned"
+  }
 
   return results
 }
