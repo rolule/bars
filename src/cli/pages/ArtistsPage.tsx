@@ -1,7 +1,7 @@
 import { getArtistsByName as searchArtistsByName } from '@lib/artist'
-import { Box, render, Text, useApp, useInput, useStdin } from 'ink'
-import { FC, useState, useEffect } from 'react'
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { Box, render, Text, useApp, useInput } from 'ink'
+import { FC, useState } from 'react'
+import useSWR, { SWRConfig } from 'swr'
 
 interface ArtistsPageProps {
   name: string
@@ -17,28 +17,18 @@ const ArtistsPage: FC<ArtistsPageProps> = ({
   interactive,
 }) => {
   const [interactivePage, setInteractivePage] = useState(page)
-  const [isActive, setIsActive] = useState(interactive)
 
-  const {
-    isLoading,
-    error,
-    data: artists,
-  } = useQuery(
-    ['artists', interactivePage],
-    () => {
-      return searchArtistsByName(name, token, interactivePage)
-    },
-    {
-      retry: false,
-      staleTime: 30000,
-      keepPreviousData: true,
-    },
+  const { error, data: artists } = useSWR(
+    [name, token, interactivePage],
+    searchArtistsByName,
   )
+  const loading = !error && !artists
 
+  const { exit } = useApp()
   useInput(
     (input, key) => {
       if (input === 'q') {
-        setIsActive(false)
+        exit()
       }
 
       if (key.rightArrow && !error) {
@@ -46,20 +36,24 @@ const ArtistsPage: FC<ArtistsPageProps> = ({
       } else if (key.leftArrow && interactivePage > 1) {
         setInteractivePage(p => p - 1)
       }
-
-      return -1
     },
-    { isActive },
+    { isActive: interactive },
   )
 
   return (
     <>
       <Text>
         <Text inverse> artists page {interactivePage} </Text>{' '}
-        {isLoading && <Text color="cyan">...</Text>}
+        {loading && <Text color="cyan">...</Text>}
+        {!loading && interactive && (
+          <Text color="blue">
+            q{interactivePage > 1 && ' ←'}
+            {!error && ' →'}
+          </Text>
+        )}
       </Text>
 
-      {!isLoading &&
+      {!loading &&
         artists?.map(a => (
           <Box key={a.id}>
             <Box width={10}>
@@ -77,12 +71,19 @@ const ArtistsPage: FC<ArtistsPageProps> = ({
   )
 }
 
-const queryClient = new QueryClient()
-
-export const renderArtistPage = (props: ArtistsPageProps) => {
-  render(
-    <QueryClientProvider client={queryClient}>
+export const renderArtistPage = async (props: ArtistsPageProps) => {
+  return render(
+    <SWRConfig
+      value={{
+        dedupingInterval: 0,
+        focusThrottleInterval: 0,
+        loadingTimeout: 0,
+        errorRetryInterval: 0,
+        errorRetryCount: 0,
+        revalidateIfStale: false,
+      }}
+    >
       <ArtistsPage {...props} />
-    </QueryClientProvider>,
+    </SWRConfig>,
   )
 }
