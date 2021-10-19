@@ -19,10 +19,10 @@ const bundleName =
 
 const config: Configuration = {
   target: 'node',
-  mode: 'production',
+  mode,
   entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, mode === 'development' ? 'build' : 'dist'),
     filename: `${bundleName}.js`,
   },
 
@@ -53,7 +53,7 @@ const config: Configuration = {
       },
     ],
   },
-  devtool: 'source-map',
+  devtool: mode === 'development' ? 'source-map' : undefined,
 
   externals: ['utf-8-validate', 'bufferutil', 'react-devtools-core'],
 

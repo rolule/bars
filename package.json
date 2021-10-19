@@ -16,7 +16,7 @@
     "analyze": "ANALYZE=1 webpack --mode production",
     "watch": "webpack --mode development --watch",
     "build:ts": "yarn tsc && tsc-alias -p tsconfig.json",
-    "build:dev": "webpack --mode development",
+    "build:dev": "webpack --mode development && chmod +x build/bars-dev.js",
     "watch:ts": "yarn tsc-watch"
   },
   "dependencies": {

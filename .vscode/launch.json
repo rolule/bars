@@ -10,7 +10,7 @@
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
       "args": ["a", "kollegah", "-i"],
-      "outFiles": ["${workspaceFolder}/dist/bars-dev.js"],
+      "outFiles": ["${workspaceFolder}/build/bars-dev.js"],
       "program": "${workspaceFolder}/src/index.ts",
       "console": "integratedTerminal"
     }
