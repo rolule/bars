@@ -53,6 +53,7 @@ const config: Configuration = {
       },
     ],
   },
+  devtool: 'source-map',
 
   externals: ['utf-8-validate', 'bufferutil', 'react-devtools-core'],
 

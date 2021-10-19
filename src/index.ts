@@ -4,7 +4,7 @@ import { green, red } from 'chalk'
 import { Command } from 'commander'
 import dotenv from 'dotenv'
 import { exit } from 'process'
-import { renderArtistPage } from './cli/components/ArtistsPage'
+import { renderArtistPage } from './cli/pages/ArtistsPage'
 
 // load environment variables from .env file
 dotenv.config({ path: getConfigFilePath() })
@@ -37,12 +37,13 @@ bars
   .argument('name', 'the name of the artist')
   .option('-i, --interactive', 'asks for user input bevore exiting', false)
   .option('-p, --page <page>', 'the page of the search results', '1')
-  .action((name, { interactive, page }) => {
+  .action(async (name, { interactive, page }) => {
     const pageNr = parseInt(page, 10)
     if (isNaN(pageNr)) {
       console.log(red('the page has to be a number'))
       exit(-1)
     }
+
     renderArtistPage({ name, token, page: pageNr, interactive })
   })
 
