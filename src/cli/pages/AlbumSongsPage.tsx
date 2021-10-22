@@ -1,5 +1,6 @@
 import { getAlbumSongsById } from '@lib/album/album'
 import { Box, render, Text } from 'ink'
+import Link from 'ink-link'
 import { FC } from 'react'
 import useSWR, { SWRConfig } from 'swr'
 
@@ -31,7 +32,9 @@ const AlbumSongsPage: FC<AlbumSongsPageProps> = ({ token, albumId }) => {
             </Box>
 
             <Box>
-              <Text>{s.title}</Text>
+              <Link url={s.url} fallback={false}>
+                <Text>{s.title}</Text>
+              </Link>
             </Box>
           </Box>
         ))}

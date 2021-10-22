@@ -53,6 +53,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:7.26.1"],
             ["eslint-plugin-react-hooks", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:4.2.0"],
             ["ink", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:3.2.0"],
+            ["ink-link", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:2.0.0"],
             ["node-fetch", "npm:3.0.0"],
             ["prettier", "npm:2.4.1"],
             ["react", "npm:17.0.2"],
@@ -3523,6 +3524,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:7.26.1"],
             ["eslint-plugin-react-hooks", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:4.2.0"],
             ["ink", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:3.2.0"],
+            ["ink-link", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:2.0.0"],
             ["node-fetch", "npm:3.0.0"],
             ["prettier", "npm:2.4.1"],
             ["react", "npm:17.0.2"],
@@ -5272,6 +5274,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ink-link", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/ink-link-npm-2.0.0-c9ee15a321-cde7b0c405.zip/node_modules/ink-link/",
+          "packageDependencies": [
+            ["ink-link", "npm:2.0.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:2.0.0", {
+          "packageLocation": "./.yarn/__virtual__/ink-link-virtual-cb1911d28c/0/cache/ink-link-npm-2.0.0-c9ee15a321-cde7b0c405.zip/node_modules/ink-link/",
+          "packageDependencies": [
+            ["ink-link", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:2.0.0"],
+            ["@types/ink", null],
+            ["@types/react", "npm:17.0.30"],
+            ["ink", "virtual:7876d33270ba2764df55f6ecc4968ade62b63e1e64315ed95e99c3a72853f51dbf8e116b168243e7267c3281eed38dacf1f3f360bc75660e32bf0b4a3c8bb540#npm:3.2.0"],
+            ["prop-types", "npm:15.7.2"],
+            ["react", "npm:17.0.2"],
+            ["terminal-link", "npm:2.1.1"]
+          ],
+          "packagePeers": [
+            "@types/ink",
+            "@types/react",
+            "ink",
             "react"
           ],
           "linkType": "HARD",
@@ -7374,6 +7404,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["supports-hyperlinks", [
+        ["npm:2.2.0", {
+          "packageLocation": "./.yarn/cache/supports-hyperlinks-npm-2.2.0-9b22a6271b-aef04fb41f.zip/node_modules/supports-hyperlinks/",
+          "packageDependencies": [
+            ["supports-hyperlinks", "npm:2.2.0"],
+            ["has-flag", "npm:4.0.0"],
+            ["supports-color", "npm:7.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["swr", [
         ["npm:1.0.1", {
           "packageLocation": "./.yarn/cache/swr-npm-1.0.1-56a5f8efad-8aaa10c4c6.zip/node_modules/swr/",
@@ -7432,6 +7473,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["minizlib", "npm:2.1.2"],
             ["mkdirp", "npm:1.0.4"],
             ["yallist", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["terminal-link", [
+        ["npm:2.1.1", {
+          "packageLocation": "./.yarn/cache/terminal-link-npm-2.1.1-de80341758-ce3d2cd3a4.zip/node_modules/terminal-link/",
+          "packageDependencies": [
+            ["terminal-link", "npm:2.1.1"],
+            ["ansi-escapes", "npm:4.3.2"],
+            ["supports-hyperlinks", "npm:2.2.0"]
           ],
           "linkType": "HARD",
         }]

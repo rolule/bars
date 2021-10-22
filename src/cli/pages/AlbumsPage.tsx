@@ -1,5 +1,6 @@
 import { searchAlbumsByName } from '@lib/album/album'
 import { Box, render, Text, useApp, useInput } from 'ink'
+import Link from 'ink-link'
 import { FC, useState } from 'react'
 import useSWR, { SWRConfig } from 'swr'
 
@@ -61,7 +62,9 @@ const AlbumsPage: FC<AlbumsPageProps> = ({
             </Box>
 
             <Box>
-              <Text>{a.name}</Text>
+              <Link url={a.url} fallback={false}>
+                <Text>{a.name}</Text>
+              </Link>
             </Box>
           </Box>
         ))}
