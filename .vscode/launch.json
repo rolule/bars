@@ -7,9 +7,20 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "a kollegah -i",
       "skipFiles": ["<node_internals>/**"],
       "args": ["a", "kollegah", "-i"],
+      "outFiles": ["${workspaceFolder}/build/bars-dev.js"],
+      "program": "${workspaceFolder}/src/index.ts",
+      "console": "integratedTerminal"
+    },
+
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "s -a 133681",
+      "skipFiles": ["<node_internals>/**"],
+      "args": ["s", "-a", "133681"],
       "outFiles": ["${workspaceFolder}/build/bars-dev.js"],
       "program": "${workspaceFolder}/src/index.ts",
       "console": "integratedTerminal"

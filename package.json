@@ -10,7 +10,7 @@
   "type": "commonjs",
   "bin": "dist/bars.js",
   "scripts": {
-    "start": "dist/bars-dev.js",
+    "start": "build/bars-dev.js",
     "clean": "rm dist/bars.js",
     "build": "webpack --mode production && chmod +x dist/bars.js",
     "analyze": "ANALYZE=1 webpack --mode production",
